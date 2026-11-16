@@ -1,9 +1,7 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'models/subject.dart';
-import 'widgets/subject_card.dart';
+import 'Subject.dart';
+import 'Subject_card.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,7 +53,10 @@ class _AbsenceTrackerState extends State<AbsenceTracker> {
       });
     } else {
       setState(() {
-        subjects = List.generate(9, (index) => Subject(name: 'Subject ${index + 1}', absences: 0));
+        subjects = List.generate(
+          9,
+          (index) => Subject(name: 'Subject ${index + 1}', absences: 0),
+        );
       });
     }
   }
@@ -112,7 +113,7 @@ class _AbsenceTrackerState extends State<AbsenceTracker> {
           itemCount: subjects.length,
           itemBuilder: (context, index) {
             return Padding(
-              padding: const EdgeInsets.only(bottom: 16.0), // Space between cards
+              padding: const EdgeInsets.only(bottom: 16.0),
               child: SubjectCard(
                 subject: subjects[index],
                 onNameChanged: (newName) => _updateSubjectName(index, newName),
