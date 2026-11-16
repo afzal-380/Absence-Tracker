@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/subject.dart';
+import 'Subject.dart';
 
 class SubjectCard extends StatefulWidget {
   final Subject subject;
@@ -43,14 +43,13 @@ class _SubjectCardState extends State<SubjectCard> {
 
   @override
   Widget build(BuildContext context) {
-    // Determine card color based on absences
     Color cardColor;
     if (widget.subject.absences >= 8) {
-      cardColor = Colors.red[100]!; // Red for 8 absences
+      cardColor = Colors.red[100]!;
     } else if (widget.subject.absences >= 6) {
-      cardColor = Colors.orange[100]!; // Orange for 6-7 absences
+      cardColor = Colors.orange[100]!;
     } else {
-      cardColor = Colors.white; // Default color
+      cardColor = Colors.white;
     }
 
     return Card(
@@ -64,7 +63,6 @@ class _SubjectCardState extends State<SubjectCard> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Editable Subject Name
             TextField(
               controller: _controller,
               style: TextStyle(
@@ -80,7 +78,6 @@ class _SubjectCardState extends State<SubjectCard> {
               onChanged: widget.onNameChanged,
             ),
             SizedBox(height: 8),
-            // Absence Count
             Text(
               'Absences: ${widget.subject.absences}',
               style: TextStyle(
@@ -89,7 +86,6 @@ class _SubjectCardState extends State<SubjectCard> {
               ),
             ),
             SizedBox(height: 16),
-            // Rounded Container for Buttons
             Container(
               decoration: BoxDecoration(
                 color: Colors.grey[200],
@@ -99,10 +95,9 @@ class _SubjectCardState extends State<SubjectCard> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // Minus Button
                   SizedBox(
-                    width: 48, // Fixed width
-                    height: 48, // Fixed height
+                    width: 48,
+                    height: 48,
                     child: TextButton(
                       onPressed: widget.onDecrement,
                       child: Text(
@@ -114,10 +109,9 @@ class _SubjectCardState extends State<SubjectCard> {
                       ),
                     ),
                   ),
-                  // Plus Button
                   SizedBox(
-                    width: 48, // Fixed width
-                    height: 48, // Fixed height
+                    width: 48,
+                    height: 48,
                     child: TextButton(
                       onPressed: widget.onIncrement,
                       child: Text(
